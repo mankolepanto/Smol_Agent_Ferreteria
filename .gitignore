@@ -1,0 +1,43 @@
+# Evitar subir configuraciones de entorno individuales
+**/.env
+
+# Archivos y carpetas generadas por Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache
+
+# Carpetas de entornos virtuales
+venv/
+.env/
+*.venv
+.Python
+
+# Archivos temporales de Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Archivos de FastAPI y dependencias
+*.log
+*.sqlite3
+alembic/
+instance/
+*.db
+*.sqlite
+*.json
+
+# Dependencias de Python
+pip-log.txt
+pip-delete-this-directory.txt
+poetry.lock
+Pipfile
+Pipfile.lock
+requirements.txt
+
+# Archivos generados por IDEs
+.vscode/
+.idea/
+*.iml
+
+# Ignorar datos de pruebas y archivos generados automáticamente
+tests/__pycache__/
