@@ -1,10 +1,9 @@
 services:
   postgres:
-    # image: ghcr.io/postgresml/postgresml:2.9.3
     build:
       context: .
       dockerfile: Dockerfile
-    # restart: unless-stopped
+    restart: always  # Asegura que el contenedor se reinicie automáticamente
     ports:
       - "5434:5432"
       - "8000:8000"
@@ -14,14 +13,16 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=ferreteria
+      - PGDATA=/var/lib/postgresql/data/pgdata  # Especifica explícitamente la ubicación de los datos
     volumes:
-      - ferreteria:/var/lib/postgresql/data
-    # Iniciamos PostgreSQL y creamos manualmente la base de datos
-    command: ["bash", "-c", "service postgresql start && sleep 5 && su postgres -c 'psql -c \"CREATE DATABASE ferreteria WITH OWNER postgres;\"' || true && tail -f /dev/null"]
+      - postgres_data:/var/lib/postgresql/data  # Renombramos el volumen para mayor claridad
+    # Eliminamos el comando para permitir que el ENTRYPOINT del Dockerfile se encargue de todo
+    # command: ["bash", "-c", "service postgresql start && sleep 5 && su postgres -c 'psql -c \"CREATE DATABASE ferreteria WITH OWNER postgres;\"' || true && tail -f /dev/null"]
 
 volumes:
-  ferreteria:
+  postgres_data:
     driver: local
+    name: postgres_ferreteria_data  # Nombre explícito para el volumen
 
 networks:
   ferreteria:
