@@ -24,6 +24,6 @@ volumes:
     driver: local
 
 networks:
-  sipca:
+  ferreteria:
     external: true
     name: ferreteria
