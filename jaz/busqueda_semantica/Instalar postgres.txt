@@ -1,0 +1,22 @@
+Notas para la instalación de postgres con soporte para pgvector
+---------------------------------------------------------------
+
+- La instalación está basada en docker por lo que será necesario tenerlo instalado en el equipo local.
+- Importante, se debe tener los dos comandos: docker y docker compose.
+- Copiar los ficheros docker-compose.yml y dockerfile en cualquier carpeta (por ejemplo, en la carpeta del proyecto)
+
+- Lanzar la instalación ejecutando: docker-compose up -d
+
+- OPCIONAL:
+- Es interesante tener un cliente de postgres, como por ejemplo: https://dbeaver.io/download/
+- Los parámetros de configuración de postgres son:
+    - user: postgres
+    - password: postgres
+    - host: localhost
+    - port: 5434 (aunque el puerto estandar es 5432, lo he tenido que cambiar porque tengo otros postgres en ejecución)
+    - database: ferreteria
+
+- Si se copia el fichero busqueda_semantica_1.pynb en un directorio nuevo, acordarse de copiar el fichero .env
+  para que se pueda acceder a la IA.
+
+- 

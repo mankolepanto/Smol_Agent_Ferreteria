@@ -1,0 +1,29 @@
+services:
+  postgres:
+    # image: ghcr.io/postgresml/postgresml:2.9.3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # restart: unless-stopped
+    ports:
+      - "5434:5432"
+      - "8000:8000"
+
+    mem_limit: 4g  # Ajusta este valor según lo que necesites
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ferreteria
+    volumes:
+      - ferreteria:/var/lib/postgresql/data
+    # Iniciamos PostgreSQL y creamos manualmente la base de datos
+    command: ["bash", "-c", "service postgresql start && sleep 5 && su postgres -c 'psql -c \"CREATE DATABASE ferreteria WITH OWNER postgres;\"' || true && tail -f /dev/null"]
+
+volumes:
+  ferreteria:
+    driver: local
+
+networks:
+  sipca:
+    external: true
+    name: ferreteria
