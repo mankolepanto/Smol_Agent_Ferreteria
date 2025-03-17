@@ -1,0 +1,5 @@
+smolagents==1.11.0
+gradio 
+requests
+python-dotenv
+openai
