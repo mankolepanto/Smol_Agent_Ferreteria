@@ -1,0 +1,6 @@
+smolagents==1.11.0
+smolagents[litellm]
+gradio 
+requests
+python-dotenv
+groq
