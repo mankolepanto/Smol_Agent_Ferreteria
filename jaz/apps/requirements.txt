@@ -1,6 +1,12 @@
 smolagents==1.11.0
 smolagents[litellm]
-gradio 
+gradio>=4.19.2
 requests
-python-dotenv
+python-dotenv>=1.0.0
 groq
+
+# Para los ejemplos de http://smolagents.com:
+markdownify
+requests
+duckduckgo-search>=4.1.1
+pandas
